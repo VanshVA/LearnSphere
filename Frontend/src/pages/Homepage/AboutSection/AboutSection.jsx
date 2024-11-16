@@ -38,6 +38,12 @@ const AboutSection = () => {
           </p>
         </div>
       </div>
+
+      <div className="section-2">
+        <h2>Educrown is trusted by 50,000+ student.</h2>
+
+        <p>Microsoft has spent a lot of time trying to make Windows self-repairing, partly because it generally gets the blame when other programs or users try to improve” it. Given that tens of thousands of expert programmers have worked on the code over the past 30 years.</p>
+      </div>
     </div>
   );
 };
