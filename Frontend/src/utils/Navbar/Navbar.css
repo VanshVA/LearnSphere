@@ -1,0 +1,39 @@
+.navbar{
+    width: 100%;
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3vh 5vw;
+    color: var(--text-color-2);
+    font-size: 1.2rem;
+    transition: 0.2s ease-in-out;
+}
+
+.scrolled { 
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.hamburger{
+    display: none;
+}
+
+.navlinks{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw;
+}
+
+.navlinks a{
+    color: var(--text-color-2);
+    text-decoration: none;
+    transition: 0.2s ease-in-out;
+}
+
+.navlinks a:hover{
+    color: var(--theme-color);
+}

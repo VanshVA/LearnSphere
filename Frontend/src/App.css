@@ -1,5 +1,26 @@
 :root{
     --theme-color: #c7254e;
-    --theme-bg-color: #f5a1ba;
+    --theme-color-hover:#6e142c;
+    --theme-color-active:#350a16;
+    --theme-bg-color: #e1879e;
     --text-color: #1d1818;
+    --text-color-2: #ffffff;
+}
+
+.basic-button{
+    padding: 10px 15px;
+    background-color: var(--theme-color);
+    border: none;
+    border-radius: 100px;
+    color: var(--text-color-2);
+    font-size: large;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+.basic-button:hover{
+    background-color: var(--theme-color-hover);
+
+}
+.basic-button:active{
+    background-color: var(--theme-color-active);
 }
