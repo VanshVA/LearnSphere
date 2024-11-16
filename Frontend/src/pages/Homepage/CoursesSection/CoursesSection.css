@@ -1,5 +1,151 @@
-.courses-section-container{
-    height: 100vh;
+.main{
+
     width: 100%;
-    background-color: #008cff;
+    /* background-color: #008cff; */
+}
+.firstSection{
+    background-color: white;
+    width: 100%;
+    height: 80%;
+    
+}
+.firstSection h1{
+    margin-top: 10px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    color: black;
+}
+.container{
+    margin-top: 40px;
+    /* background-color: purple; */
+    background-color: whitesmoke;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  
+}
+.card{
+    /* background-color: greenyellow; */
+    width: 450px;
+    height: 500px;
+    text-align: center;
+    margin-inline: 30px;
+    border-radius: 20px;
+    box-shadow: -5px -5px 15px rgb(45, 41, 41);
+    animation: slide 1s linear infinite ;
+    
+   
+}
+@keyframes slide{
+    0%{
+       transform: translateX(0);
+    }
+    0%{
+        transform: translateX(calc(100px));
+    }
+    0%{
+        transform: translateX(calc(150px));
+    }
+}
+.Cardimage img{
+  width: 450px;
+  height: 300px;
+  border-radius: 20px;
+ 
+}
+.card h3{
+    margin-top: 10px;
+    color: black;
+}
+.card p{
+    margin: 10px;
+    color: gray;
+    font-size: 16px;
+}
+.btn{
+    /* background-color: yellow; */
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 20px;
+}
+.btn button{
+    background-color: palevioletred;
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    outline: none;
+    border: none;
+}
+.secondSection{
+    margin-top: 20px;
+    /* background-color: orangered; */
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 100px;
+}
+.content{
+   
+    /* background-color:red; */
+  margin: 20px;
+     padding: 50px;
+    width: 30%;
+}
+.content p{
+    margin-top: 20px;
+    color:gray;
+}
+.Contentimage{
+    
+    /* background-color: cadetblue; */
+}
+.Contentimage img{
+    width: 500px;
+  height: 350px;
+ 
+}
+@media only screen and (max-width: 768px){
+    .container{
+        margin-top: 30px;
+        background-color: purple;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      
+    }
+    .card{
+        background-color: greenyellow;
+        width: 450px;
+        height: 500px;
+        text-align: center;
+        margin-inline: 30px;
+        border-radius: 20px;
+    
+        animation: slide 1s linear infinite ;
+        
+       
+    }
+    .secondSection{
+        background-color: orangered;
+        height: 100%;
+        display: flex;
+       flex-direction: column;
+       align-items: center;
+        padding: 100px;
+    }
+    .content{
+   
+        /* background-color:red; */
+      
+         /* padding: 40px; */
+        width: 100%;
+    }
+    .Contentimage img{
+        width: 200px;
+      height: 250px;
+     
+    }
 }
