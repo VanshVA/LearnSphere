@@ -1,7 +1,6 @@
 .hero-section-container{
     height: 100vh;
     width: 100%;
-    background-color: rgb(0, 225, 255);
     position: relative;
     overflow: hidden;
 }
@@ -25,7 +24,7 @@
     justify-content: space-between;
     align-items: center;
     color: white;
-    background-color: #00000083;
+    background-color: #000000b9;
 }
 
 .overlay-left{
@@ -37,16 +36,25 @@
     flex-direction: column;
 }
 
+.overlay-left span{
+    color: var(--theme-color);
+}
 .overlay-left p{
     font-size: 1.2rem;
 }
 .overlay-left input{
-    background: white;
+    background: var(--theme-bg-color);
     border-radius: 100px;
     padding: 20px 25px;
     border: none;
     width: 70%;
     outline: none;
+    color: var(--text-color);
+}
+
+.overlay-left input::placeholder{
+    color: var(--text-color);
+
 }
 .hero-section-button-container {
     width: 20%;
@@ -58,15 +66,22 @@
 }
 
 .hero-section-button-container button {
-    padding: 10px ;
+    /* padding: 10px; */
+    height: 50px;
+    width: 50px;
     background-color: transparent;
-    color: white;
-    border: 1px solid white;
+    color: var(--theme-color);
     border-radius: 50%;
+    border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    background-color: var(--theme-bg-color);
 }
-
+.hero-section-button-container i{
+    font-size: 1.5rem;
+    font-weight: 900;
+}
 .hero-section-button-container button:hover {
-    background-color: #ddd;
+    background-color: var(--theme-color);
+    color: var(--theme-bg-color);
 }
