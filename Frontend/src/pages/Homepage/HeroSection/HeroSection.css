@@ -1,5 +1,87 @@
 .hero-section-container{
     height: 100vh;
     width: 100%;
-    background-color: rgb(0, 225, 255);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section-background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+}
+
+.hero-section-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background-color: #000000b9;
+}
+
+.overlay-left{
+    font-size: 1.5rem;
+    width: 60%;
+    gap: 20px;
+    padding: 10vh 7vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.overlay-left span{
+    color: var(--theme-color);
+}
+.overlay-left p{
+    font-size: 1.2rem;
+}
+.overlay-left input{
+    background: var(--theme-bg-color);
+    border-radius: 100px;
+    padding: 20px 25px;
+    border: none;
+    width: 70%;
+    outline: none;
+    color: var(--text-color);
+}
+
+.overlay-left input::placeholder{
+    color: var(--text-color);
+
+}
+.hero-section-button-container {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5vh;
+    flex-direction: column;
+}
+
+.hero-section-button-container button {
+    /* padding: 10px; */
+    height: 50px;
+    width: 50px;
+    background-color: transparent;
+    color: var(--theme-color);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: var(--theme-bg-color);
+}
+.hero-section-button-container i{
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+.hero-section-button-container button:hover {
+    background-color: var(--theme-color);
+    color: var(--theme-bg-color);
 }
