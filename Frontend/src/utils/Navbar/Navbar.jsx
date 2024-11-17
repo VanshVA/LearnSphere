@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./Navbar.css";
+
 const Navbar = () => {
+
+  const navigate = useNavigate();
+
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -20,7 +25,7 @@ const Navbar = () => {
         <a href="#about">About</a>
         <a href="#course">Courses</a>
         <a href="#contact">Contact</a>
-        <button className="basic-button">Login</button>
+        <button className="basic-button" onClick={()=>navigate('/login')}>Login</button>
       </div>
 
       <div className="hamburger">

@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Authentication.css";
 import SignInForm from "./SignIn";
 import SignUpForm from "./SignUp";
 
 export default function Authentication() {
+
+  const navigate = useNavigate();
+
   const [type, setType] = useState("signIn");
   const handleOnClick = text => {
     if (text !== type) {
@@ -15,6 +19,10 @@ export default function Authentication() {
     "container " + (type === "signUp" ? "right-panel-active" : "");
   return (
     <div className="Authentication">
+      <div className="Auth-navbar">
+        <div className="logo">Logo</div>
+        <i class="ri-home-9-line" onClick={()=>navigate('/')}></i>
+      </div>
       <div className={containerClass} id="container">
         <SignUpForm />
         <SignInForm />
