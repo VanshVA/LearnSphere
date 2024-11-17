@@ -10,7 +10,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const heroHeight = document.querySelector(".hero-section-container").offsetHeight;
-      setScrolled(window.scrollY > heroHeight);
+      setScrolled(window.scrollY > heroHeight / 2);
     };
 
     window.addEventListener("scroll", handleScroll);

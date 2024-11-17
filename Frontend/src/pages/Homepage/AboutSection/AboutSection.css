@@ -19,6 +19,8 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin-top: -100px;
+  z-index: 2;
 }
 
 /*icon */
@@ -51,4 +53,9 @@
   font-size: 14px;
   color: #747b8c;
   line-height: 1.6;
+}
+
+.section-2{
+  margin: 10vh 0;
+  text-align: center;
 }

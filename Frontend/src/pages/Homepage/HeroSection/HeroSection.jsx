@@ -32,7 +32,10 @@ const HeroSection = () => {
           <div className="overlay-left">
             <h1>Develop a <span>passion</span> for <span>learning</span> new things</h1>
             <p>Was certainty remaining engrossed applauded sir how discovery. Settled opinion how enjoyed greater joy adapted too shy. Now properly surprise expenses.</p>
-            <input type="text" placeholder="Search courses..."/>
+            <div className="input-container">
+              <input type="text" placeholder="Search courses..."/>  
+              <div className="search-icon"><i class="ri-search-line"></i></div>
+            </div>
           </div>
           <div className="hero-section-button-container">
             <button onClick={handlePrev}><i class="ri-arrow-left-s-line"></i></button>
