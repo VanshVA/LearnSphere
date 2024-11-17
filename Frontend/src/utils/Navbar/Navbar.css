@@ -21,6 +21,10 @@
     display: none;
 }
 
+.sidebar-buttons{
+    display: none;
+}
+
 .navlinks{
     display: flex;
     align-items: center;
@@ -45,6 +49,13 @@
 
     .navlinks{
         display: none;
+    }
+
+    .sidebar-buttons{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
     }
     
     .navbar{

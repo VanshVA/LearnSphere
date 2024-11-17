@@ -37,8 +37,13 @@ const Navbar = () => {
         </button>
       </div>
 
-      <div onClick={toggleSidebar} className="hamburger">
-        <i class="ri-menu-line basic-button"></i>
+      <div className="sidebar-buttons">
+        <button className="basic-button sidebar-login" onClick={() => navigate("/login")}>
+          Login
+        </button>
+        <div onClick={toggleSidebar} className="hamburger">
+          <i class="ri-menu-line basic-button"></i>
+        </div>
       </div>
     </nav>
   );
