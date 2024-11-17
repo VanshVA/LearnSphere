@@ -37,3 +37,17 @@
 .navlinks a:hover{
     color: var(--theme-color);
 }
+
+@media (max-width: 480px) {
+    .hamburger{
+        display: block;
+    }
+
+    .navlinks{
+        display: none;
+    }
+    
+    .navbar{
+        background-color: var(--theme-color);
+    }
+}

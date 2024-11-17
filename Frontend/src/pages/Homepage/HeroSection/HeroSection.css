@@ -112,3 +112,25 @@
     background-color: var(--theme-color);
     color: var(--theme-bg-color);
 }
+
+@media (max-width: 480px) {
+    .hero-section-overlay{
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .overlay-left{
+        width: 100%;
+        padding: 10vw;
+    }
+
+    .input-container{
+        width: 90%;
+    }
+
+    .hero-section-button-container{
+        width: 50%;
+        flex-direction: row;
+    }
+}
