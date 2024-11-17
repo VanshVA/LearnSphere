@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+
 function SignInForm() {
+    const [message, setMessage] = useState("");
+    const [token, setToken] = useState("");
     const [state, setState] = React.useState({
         email: "",
         password: ""
@@ -12,18 +16,17 @@ function SignInForm() {
         });
     };
 
-    const handleOnSubmit = evt => {
-        evt.preventDefault();
-
-        const { email, password } = state;
-        alert(`You are login with email: ${email} and password: ${password}`);
-
-        for (const key in state) {
-            setState({
-                ...state,
-                [key]: ""
-            });
+    const handleOnSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post("http://localhost:4000/auth/signin", state);
+            setMessage(response.data.message);
+            setToken(response.data.token); // Save token for further API requests
+            localStorage.setItem("token", response.data.token); // Store token locally
+        } catch (error) {
+            setMessage(error.response?.data?.message || "Signin failed. Please try again.");
         }
+        console.log(message)
     };
 
     return (
@@ -58,6 +61,8 @@ function SignInForm() {
                 />
                 <a href="#">Forgot your password?</a>
                 <button>Sign In</button>
+                {message && <p>{message}</p>}
+                {token && <p>JWT Token: {token}</p>}
             </form>
         </div>
     );
