@@ -1,31 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+
 function SignUpForm() {
-    const [state, setState] = React.useState({
-        name: "",
-        email: "",
-        password: ""
-    });
-    const handleChange = evt => {
+    const [message, setMessage] = useState("");
+
+    const initialState = {
+        studentName: "",
+        studentEmail: "",
+        studentPassword: "",
+        role: "student", // Default role for signup
+    };
+
+    const [state, setState] = useState(initialState);
+
+    const handleChange = (evt) => {
         const value = evt.target.value;
         setState({
             ...state,
-            [evt.target.name]: value
+            [evt.target.name]: value,
         });
     };
 
-    const handleOnSubmit = evt => {
-        evt.preventDefault();
+    const handleOnSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post("http://localhost:4000/auth/signup", state);
+            setMessage(response.data.message);
 
-        const { name, email, password } = state;
-        alert(
-            `You are sign up with name: ${name} email: ${email} and password: ${password}`
-        );
-
-        for (const key in state) {
-            setState({
-                ...state,
-                [key]: ""
-            });
+            // Clear the form after successful registration
+            setState(initialState);
+        } catch (error) {
+            setMessage(error.response?.data?.message || "Signup failed. Please try again.");
         }
     };
 
@@ -35,7 +40,7 @@ function SignUpForm() {
                 <h1>Create Account</h1>
                 <div className="social-container">
                     <a href="#" className="social">
-                    <i className="ri-facebook-fill"></i>
+                        <i className="ri-facebook-fill"></i>
                     </a>
                     <a href="#" className="social">
                         <i className="ri-google-fill"></i>
@@ -44,29 +49,33 @@ function SignUpForm() {
                         <i className="ri-linkedin-fill"></i>
                     </a>
                 </div>
-                <span>or use your email for registration</span>
+                <span>Or use your <strong>email</strong> for registration</span>
                 <input
                     type="text"
-                    name="name"
-                    value={state.name}
+                    name="studentName"
+                    value={state.studentName}
                     onChange={handleChange}
                     placeholder="Name"
+                    required
                 />
                 <input
                     type="email"
-                    name="email"
-                    value={state.email}
+                    name="studentEmail"
+                    value={state.studentEmail}
                     onChange={handleChange}
                     placeholder="Email"
+                    required
                 />
                 <input
                     type="password"
-                    name="password"
-                    value={state.password}
+                    name="studentPassword"
+                    value={state.studentPassword}
                     onChange={handleChange}
                     placeholder="Password"
+                    required
                 />
                 <button>Sign Up</button>
+                {message && <p>{message}</p>}
             </form>
         </div>
     );

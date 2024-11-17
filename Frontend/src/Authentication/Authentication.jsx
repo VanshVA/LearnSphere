@@ -21,7 +21,7 @@ export default function Authentication() {
     <div className="Authentication">
       <div className="Auth-navbar">
         <div className="logo">Logo</div>
-        <i class="ri-home-9-line" onClick={()=>navigate('/')}></i>
+        <i className="ri-home-9-line" onClick={()=>navigate('/')}></i>
       </div>
       <div className={containerClass} id="container">
         <SignUpForm />
