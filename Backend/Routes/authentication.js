@@ -81,7 +81,7 @@ router.post('/signin', async (req, res) => {
             await user.save();
         }
 
-        res.status(200).json({ message: `${role} signin successful`, token });
+        res.status(200).json({ message: `${role} signin successful`, token , role , userId : user._id });
     } catch (error) {
         res.status(500).json({ message: "Error during signin", error: error.message });
     }

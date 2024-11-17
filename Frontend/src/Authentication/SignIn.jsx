@@ -62,7 +62,6 @@ function SignInForm() {
                 <a href="#">Forgot your password?</a>
                 <button>Sign In</button>
                 {message && <p>{message}</p>}
-                {token && <p>JWT Token: {token}</p>}
             </form>
         </div>
     );
