@@ -1,5 +1,40 @@
 .contact-section-container{
     height: 100vh;
     width: 100%;
-    background-color: #0400ff;
+    display: flex;
+    /* background-color: #0400ff; */
+}
+
+.contact-left{
+    width: 50%;
+}
+
+.contact-left iframe{
+    width: 100%;
+    height: 100%;
+}
+
+.contact-right{
+    width: 50%;
+    padding: 13vh;
+}
+
+.contact-right input, .contact-right textarea{
+    font-size: 1.1rem;
+    border: 1px solid #c5c5c5;
+    outline: none;
+    padding: 10px 15px;
+    margin: 10px;
+    width: 46%; 
+}
+
+.contact-right textarea{
+    width: 96%;    
+}
+.contact-right button{
+    display: block;
+}
+
+.contact-line-2 input{
+    width: 96%;
 }
