@@ -3,32 +3,33 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Student = require('../models/student');
 const Teacher = require('../models/teacher');
+const Admin = require('../models/admin');
 const router = express.Router();
 
 // Secret key for JWT
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key_here';
 
-// Student Signup API
-router.post('/signup', async (req, res) => {
+// Admin signup API
+router.post('/admin-signup', async (req, res) => {
     try {
-        const { studentName, studentEmail, studentPassword, role } = req.body;
+        const { adminName, adminEmail, adminPassword, role } = req.body;
 
         // Check if the user already exists
-        const existingStudent = await Student.findOne({ studentEmail });
-        if (existingStudent) {
+        const existingAdmin = await Admin.findOne({ adminEmail });
+        if (existingAdmin) {
             return res.status(400).json({ message: 'Email already registered' });
         }
 
         // Create new student
-        const newStudent = new Student({
-            studentName,
-            studentEmail,
-            studentPassword,
+        const newAdmin = new Admin({
+            adminName,
+            adminEmail,
+            adminPassword,
             role
         });
 
-        await newStudent.save();
-        res.status(201).json({ message: 'Student registered successfully' });
+        await newAdmin.save();
+        res.status(201).json({ message: 'Admin registered successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Error during signup', error: error.message });
     }
@@ -55,6 +56,32 @@ router.post('/teacher-signup', async (req, res) => {
 
         await newTeacher.save();
         res.status(201).json({ message: 'Teacher registered successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error during signup', error: error.message });
+    }
+});
+
+// Student Signup API
+router.post('/signup', async (req, res) => {
+    try {
+        const { studentName, studentEmail, studentPassword, role } = req.body;
+
+        // Check if the user already exists
+        const existingStudent = await Student.findOne({ studentEmail });
+        if (existingStudent) {
+            return res.status(400).json({ message: 'Email already registered' });
+        }
+
+        // Create new student
+        const newStudent = new Student({
+            studentName,
+            studentEmail,
+            studentPassword,
+            role
+        });
+
+        await newStudent.save();
+        res.status(201).json({ message: 'Student registered successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Error during signup', error: error.message });
     }

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function SignInForm() {
+    const navigate = useNavigate();
     const [message, setMessage] = useState("");
     const [token, setToken] = useState("");
     const [state, setState] = React.useState({
@@ -22,7 +24,14 @@ function SignInForm() {
             const response = await axios.post("http://localhost:4000/auth/signin", state);
             setMessage(response.data.message);
             setToken(response.data.token); // Save token for further API requests
-            localStorage.setItem("token", response.data.token); // Store token locally
+            localStorage.setItem("token", response.data.token); 
+                if (response.data.role == "admin") {
+                    navigate("/admin-dashboard");
+                } else if (response.data.role == "teacher") {
+                    navigate("/teacher-dashboard");
+                } else {
+                    navigate("/student-dashboard");
+                }
         } catch (error) {
             setMessage(error.response?.data?.message || "Signin failed. Please try again.");
         }
