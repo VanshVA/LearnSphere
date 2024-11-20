@@ -9,6 +9,7 @@ const Sidebar = ({isOpen}) => {
         <a href="#about">About</a>
         <a href="#course">Courses</a>
         <a href="#contact">Contact</a>
+        
     </div>
   )
 }
