@@ -1,5 +1,5 @@
 .main{
-
+    overflow: hidden;
     width: 100%;
     background-color: white;
     
@@ -113,10 +113,6 @@
 .content p{
    margin-top: 10px;
     color:gray;
-}
-.Contentimage{
-    
-    /* background-color: cadetblue; */
 }
 .Contentimage img{
     width: 500px;
