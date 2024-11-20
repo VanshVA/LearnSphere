@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import {Link} from 'react-router-dom'
 function SignInForm() {
     const [message, setMessage] = useState("");
     const [token, setToken] = useState("");
@@ -34,15 +34,15 @@ function SignInForm() {
             <form onSubmit={handleOnSubmit}>
                 <h1>Sign in</h1>
                 <div className="social-container">
-                    <a href="#" className="social">
+                    <Link to={"/"} className="social">
                         <i className="ri-facebook-fill"></i>
-                    </a>
-                    <a href="#" className="social">
+                    </Link>
+                    <Link to={"/"} className="social">
                         <i className="ri-google-fill"></i>
-                    </a>
-                    <a href="#" className="social">
+                    </Link>
+                    <Link to={"/"} className="social">
                         <i className="ri-linkedin-fill"></i>
-                    </a>
+                    </Link>
                 </div>
                 <span>or use your account</span>
                 <input
@@ -59,7 +59,7 @@ function SignInForm() {
                     value={state.password}
                     onChange={handleChange}
                 />
-                <a href="#">Forgot your password?</a>
+                <Link to={"/"}>Forgot your password?</Link>
                 <button>Sign In</button>
                 {message && <p>{message}</p>}
             </form>

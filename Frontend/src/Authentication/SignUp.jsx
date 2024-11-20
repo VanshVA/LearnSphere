@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 
 function SignUpForm() {
+    function handleClick(){
+        console.log("hello")
+    }
     const [message, setMessage] = useState("");
 
     const initialState = {
@@ -24,7 +27,7 @@ function SignUpForm() {
     const handleOnSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:4000/auth/signup", state);
+            const response = await axios.post("http://localhost:4000/auth/signup",state);
             setMessage(response.data.message);
 
             // Clear the form after successful registration
@@ -77,6 +80,7 @@ function SignUpForm() {
                 <button>Sign Up</button>
                 {message && <p>{message}</p>}
             </form>
+          
         </div>
     );
 }

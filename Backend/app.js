@@ -1,5 +1,4 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors"); 
 const bodyParser = require("body-parser");
 const authRoutes = require("./Routes/authentication"); 
@@ -10,7 +9,6 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(bodyParser.json());
-
 app.use(cors());
 
 // MongoDB connection

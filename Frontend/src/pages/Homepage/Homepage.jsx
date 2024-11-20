@@ -14,7 +14,7 @@ const Homepage = () => {
       <AboutSection />
       <CoursesSection />
       <FAQSection />
-      <ContactSection />
+
     </main>
   );
 };

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
 
+
 const studentSchema = new mongoose.Schema({
     studentName: {
         type: String,
@@ -48,7 +49,7 @@ const studentSchema = new mongoose.Schema({
     results: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Result' // Reference to the Result model
-    }]
+    }],
 });
 
 studentSchema.pre('save', async function (next) {
