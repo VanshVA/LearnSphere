@@ -1,12 +1,15 @@
 .main{
 
     width: 100%;
+    background-color: white;
+    
     /* background-color: #008cff; */
 }
 .firstSection{
-    background-color: white;
+    /* background-color: white; */
     width: 100%;
     height: 80%;
+   
     
 }
 .firstSection h1{
@@ -20,7 +23,7 @@
 .container{
     margin-top: 40px;
     /* background-color: purple; */
-    background-color: whitesmoke;
+    
     width: 100%;
     display: flex;
     justify-content: center;
@@ -31,12 +34,15 @@
     width: 450px;
     height: 500px;
     text-align: center;
-    margin-inline: 30px;
+    margin-inline: 20px;
     border-radius: 20px;
-    box-shadow: -5px -5px 15px rgb(45, 41, 41);
+    box-shadow: 0px 5px 5px rgb(232, 229, 229);
     /* animation: slide 1s linear infinite ; */
     
    
+}
+.card:hover{
+    transition: ease-out;
 }
 @keyframes slide{
     0%{
@@ -52,7 +58,8 @@
 .Cardimage img{
   width: 450px;
   height: 300px;
-  border-radius: 20px;
+  border-radius: 10px 10px 0px 0px;
+ 
  
 }
 .card h3{
@@ -70,6 +77,7 @@
     justify-content: space-between;
     padding: 20px;
     margin-top: 20px;
+   
 }
 .btn button{
     background-color: palevioletred;
@@ -78,6 +86,7 @@
     padding: 10px;
     outline: none;
     border: none;
+    cursor: pointer;
 }
 .secondSection{
     margin-top: 20px;
@@ -87,15 +96,22 @@
     justify-content: space-evenly;
     padding: 100px;
 }
+.head{
+    /* background-color: seagreen; */
+   
+   width: 70%;
+}
 .content{
    
     /* background-color:red; */
-  margin: 20px;
-     padding: 50px;
-    width: 30%;
+  margin: 50px;
+    padding: 40px;
+    width: 50%;
 }
+
+
 .content p{
-    margin-top: 20px;
+   margin-top: 10px;
     color:gray;
 }
 .Contentimage{
@@ -105,19 +121,21 @@
 .Contentimage img{
     width: 500px;
   height: 350px;
- 
+ filter: drop-shadow(1px 1px 20px rgb(203, 231, 237));
 }
-@media only screen and (max-width: 768px){
+
+
+@media only screen and (min-width:430px)and (max-width: 1366px) {
     .container{
         margin-top: 30px;
-        background-color: purple;
+        /* background-color: purple; */
         width: 100%;
         display: flex;
         justify-content: center;
       
     }
     .card{
-        background-color: greenyellow;
+        /* background-color: greenyellow; */
         width: 450px;
         height: 500px;
         text-align: center;
@@ -129,23 +147,32 @@
        
     }
     .secondSection{
-        background-color: orangered;
-        height: 100%;
+        /* background-color: orangered; */
+        height: 80%;
         display: flex;
        flex-direction: column;
        align-items: center;
-        padding: 100px;
+        /* padding: 100px; */
     }
     .content{
    
         /* background-color:red; */
       
-         /* padding: 40px; */
+         display: flex;
+         flex-direction: row;
+         width: 100%;
+    }
+    .content p{
         width: 100%;
     }
-    .Contentimage img{
-        width: 200px;
-      height: 250px;
-     
+    
+    .head h1{
+       display: flex;
+       text-align: center;
+       padding: 20px;
     }
-}
+    .Contentimage img{
+        width: 300px;
+      height: 250px;
+    }
+}  
