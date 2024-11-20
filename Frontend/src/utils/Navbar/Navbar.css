@@ -22,6 +22,10 @@
     display: none;
 }
 
+.sidebar-buttons{
+    display: none;
+}
+
 .navlinks{
     display: flex;
     align-items: center;
@@ -37,4 +41,25 @@
 
 .navlinks a:hover{
     color: var(--theme-color);
+}
+
+@media (max-width: 480px) {
+    .hamburger{
+        display: block;
+    }
+
+    .navlinks{
+        display: none;
+    }
+
+    .sidebar-buttons{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .navbar{
+        background-color: var(--theme-color);
+    }
 }
