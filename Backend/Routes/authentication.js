@@ -1,13 +1,14 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const Student = require('../models/student'); 
+const Student = require('../models/student');
+const Teacher = require('../models/teacher');
 const router = express.Router();
 
 // Secret key for JWT
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key_here';
 
-// Signup API
+// Student Signup API
 router.post('/signup', async (req, res) => {
     try {
         const { studentName, studentEmail, studentPassword, role } = req.body;
@@ -33,7 +34,33 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-// Signin API
+// Teacher signup API
+router.post('/teacher-signup', async (req, res) => {
+    try {
+        const { teacherName, teacherEmail, teacherPassword, role } = req.body;
+
+        // Check if the user already exists
+        const existingStudent = await Teacher.findOne({ teacherEmail });
+        if (existingStudent) {
+            return res.status(400).json({ message: 'Email already registered' });
+        }
+
+        // Create new student
+        const newTeacher = new Teacher({
+            teacherName,
+            teacherEmail,
+            teacherPassword,
+            role
+        });
+
+        await newTeacher.save();
+        res.status(201).json({ message: 'Teacher registered successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error during signup', error: error.message });
+    }
+});
+
+// ALL{Admin, Teacher, Stident} Signin API
 router.post('/signin', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -81,7 +108,7 @@ router.post('/signin', async (req, res) => {
             await user.save();
         }
 
-        res.status(200).json({ message: `${role} signin successful`, token , role , userId : user._id });
+        res.status(200).json({ message: `${role} signin successful`, token, role, userId: user._id });
     } catch (error) {
         res.status(500).json({ message: "Error during signin", error: error.message });
     }
