@@ -67,16 +67,18 @@ const CoursesSection = () => {
 
       <section className='secondSection'>
         <div className='content'>
-          <h2>Education is the foundation upon which we build our future</h2>
+          <div className='head'><h1>Education is the foundation upon which we build our future</h1></div>
+          
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias non repellat at dolorum est nemo delectus
             itaque soluta nam repellendus quia tempora numquam nihil ad illum culpa beatae libero,
             olestiae excepturi quas quibusdam quisquam? At, nemo mollitia? 
            quam molestiae excepturi quas quibusdam quisquam? At, nemo mollit
            cepturi quas quibusdam quisquam? At, nemo mollit</p>
+          
 
         </div>
         <div className='Contentimage'>
-         <img src='src/assets/Book.jpg'></img>
+         <img src='src/assets/Book1.png'></img>
         </div>
 
       </section>
