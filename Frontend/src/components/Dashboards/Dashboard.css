@@ -1,0 +1,177 @@
+
+  .dashboard-container {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    padding-inline: 20px;
+  }
+  
+  .dashboard-logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .dashboard-user-info {
+    text-align: right;
+  }
+  
+  .dashboard-user-name {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .dashboard-user-role {
+    display: block;
+    color: gray;
+  }
+  
+  .dashboard-nav {
+    background-color: #e9ecef;
+    padding: 10px;
+    padding-inline: 20px;
+  }
+  
+  .dashboard-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+  }
+  
+  .dashboard-nav li {
+    padding: 5px 10px;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .dashboard-nav li:hover,
+  .dashboard-nav li.active {
+    background-color: #f1f1f1;
+    border-bottom: 3px solid var(--theme-color);
+  }
+  
+  .dashboard-main {
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  .dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+  }
+  
+  .dashboard-stat {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .dashboard-welcome {
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-change {
+    display: block;
+    font-size: 12px;
+  }
+  
+  .dashboard-positive {
+    color: green;
+  }
+  
+  .dashboard-negative {
+    color: red;
+  }
+  
+  .dashboard-home-content,
+  .dashboard-courses-content,
+  .dashboard-attendance-content,
+  .dashboard-assignments-content,
+  .dashboard-results-content,
+  .dashboard-profile-content {
+    display: grid;
+    gap: 20px;
+  }
+  
+  .dashboard-course,
+  .dashboard-assignment,
+  .dashboard-result,
+  .dashboard-profile-details {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 20px;
+  }
+  
+  .dashboard-progress-bar {
+    background-color: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .dashboard-progress {
+    height: 10px;
+    background-color: #17a2b8;
+  }
+  
+  .dashboard-calendar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .dashboard-calendar-day {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100px;
+    text-align: center;
+  }
+  
+  .dashboard-calendar-day button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #17a2b8;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .dashboard-calendar-day button:hover {
+    background-color: #138496;
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard-nav ul {
+      flex-direction: column;
+    }
+  
+    .dashboard-nav li {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .dashboard-calendar {
+      justify-content: center;
+    }
+  }
+  

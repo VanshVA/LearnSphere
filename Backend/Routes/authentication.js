@@ -10,6 +10,54 @@ const router = express.Router();
 
 // Secret key for JWT
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key_here';
+
+//Admin signup API
+router.post('/admin-signup', async (req, res) => {
+    try {
+        const { adminName, adminEmail, adminPassword, role } = req.body;
+        // Check if the user already exists
+        const existingAdmin = await Admin.findOne({ adminEmail });
+        if (existingAdmin) {
+            return res.status(400).json({ message: 'Email already registered' });
+        }
+        // Create new student
+        const newAdmin = new Admin({
+            adminName,
+            adminEmail,
+            adminPassword,
+            role
+        });
+        await newAdmin.save();
+        res.status(201).json({ message: 'Admin registered successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error during signup', error: error.message });
+    }
+});
+
+//Teacher signup API
+router.post('/teacher-signup', async (req, res) => {
+    try {
+        const { teacherName, teacherEmail, teacherPassword, role } = req.body;
+        // Check if the user already exists
+        const existingTeacher = await Teacher.findOne({ teacherEmail });
+        if (existingTeacher) {
+            return res.status(400).json({ message: 'Email already registered' });
+        }
+        // Create new student
+        const newTeacher = new Teacher({
+            teacherName,
+            teacherEmail,
+            teacherPassword,
+            role
+        });
+        await newTeacher.save();
+        res.status(201).json({ message: 'Teacher registered successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error during signup', error: error.message });
+    }
+});
+
+// Student Signup API
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -17,15 +65,14 @@ const transporter = nodemailer.createTransport({
         pass: "lplk exjd xqgu gpng",
     },
 });
-// Admin signup API
-router.post('/admin-signup', async (req, res) => {
 
+router.post('/signup', async (req, res) => {
     try {
-        const { adminName, adminEmail, adminPassword, role } = req.body;
+        const { studentName, studentEmail, studentPassword, role } = req.body;
 
         // Check if the user already exists
-        const existingAdmin = await Admin.findOne({ adminEmail });
-        if (existingAdmin) {
+        const existingStudent = await Student.findOne({ studentEmail });
+        if (existingStudent) {
             return res.status(400).json({ message: 'Email already registered' });
         }
 
@@ -34,24 +81,12 @@ router.post('/admin-signup', async (req, res) => {
             studentName,
             studentEmail,
             studentPassword,
-            role,
-            verified: false,
+            role
         });
 
         await sendOTPVerificationEmail(newStudent);
         await newStudent.save();
-        res.status(201).json({ message: 'Student registered successfully. Verification OTP email sent.' });
-
-
-        const newAdmin = new Admin({
-            adminName,
-            adminEmail,
-            adminPassword,
-            role
-        });
-
-        await newAdmin.save();
-        res.status(201).json({ message: 'Admin registered successfully' });
+        res.status(201).json({ message: 'Student registered successfully. Verification OTP email sent.' });
     } catch (error) {
         res.status(500).json({ message: 'Error during signup', error: error.message });
     }
@@ -79,38 +114,57 @@ const sendOTPVerificationEmail = async ({ _id, studentEmail }) => {
             createdAt: Date.now(),
             expiresAt: Date.now() + 3600000,
         });
-        await studentWithOTP.save();      
+        await studentWithOTP.save();
         await transporter.sendMail(mailOption);
     } catch (error) {
         console.error("Error sending OTP email:", error.message);
     }
 };
-// Signin API
-// Student Signup API
-router.post('/signup', async (req, res) => {
+
+router.post("/verifyOtp", async (req, res) => {
     try {
-        const { studentName, studentEmail, studentPassword, role } = req.body;
-
-        // Check if the user already exists
-        const existingStudent = await Student.findOne({ studentEmail });
-        if (existingStudent) {
-            return res.status(400).json({ message: 'Email already registered' });
+        let { userId, otp } = req.body;
+        if (!userId || !otp) {
+            throw Error("Empty otp details are not allowed");
         }
+        else {
+            const UserOTPVerificationRecords = await UserOTPVerification.find({
+                userId,
+            });
+            if (UserOTPVerificationRecords.length <= 0) {
+                throw new Error("Account record doesn't exist or has been verified already. please sign up or log in.")
+            }
+            else {
+                const { expiresAt } = UserOTPVerificationRecords[0];
+                const hashedOTP = UserOTPVerificationRecords[0].otp;
+                if (expiresAt < Date.now()) {
+                    await UserOTPVerification.deleteMany({ userId })
+                    throw new Error("Code has expired. plese request again");
+                }
+                else {
+                    const validOtp = await bcrypt.compare(otp, hashedOTP);
 
-        // Create new student
-        const newStudent = new Student({
-            studentName,
-            studentEmail,
-            studentPassword,
-            role
-        });
-
-        await newStudent.save();
-        res.status(201).json({ message: 'Student registered successfully' });
+                    if (!validOtp) {
+                        throw new Error("Invalid code passed. Check your indox.");
+                    }
+                    else {
+                        await Student.updateOne({ _id: userId }, { verified: true });
+                        await UserOTPVerification.deleteMany({ userId })
+                        res.json({
+                            status: "Verified",
+                            message: "USER email verified successfully",
+                        })
+                    }
+                }
+            }
+        }
     } catch (error) {
-        res.status(500).json({ message: 'Error during signup', error: error.message });
+        res.json({
+            status: "failed",
+            message: error.message,
+        })
     }
-});
+})
 
 // ALL{Admin, Teacher, Stident} Signin API
 router.post('/signin', async (req, res) => {
@@ -161,53 +215,9 @@ router.post('/signin', async (req, res) => {
         }
 
         res.status(200).json({ message: `${role} signin successful`, token, role, userId: user._id });
-        res.status(200).json({ message: `${role} signin successful`, token, role, userId: user._id });
     } catch (error) {
         res.status(500).json({ message: "Error during signin", error: error.message });
     }
 });
-router.post("/verifyOtp", async (req, res)=>{
-    try {
-        let {userId , otp} = req.body;
-        if(!userId || !otp){
-            throw Error ("Empty otp details are not allowed");
-        }
-        else{
-            const UserOTPVerificationRecords  = await UserOTPVerification.find({
-                userId,
-            }); 
-            if(UserOTPVerificationRecords.length <=0){
-                throw new Error("Account record doesn't exist or has been verified already. please sign up or log in.")
-            }
-            else{
-                const {expiresAt} = UserOTPVerificationRecords[0];
-                const hashedOTP = UserOTPVerificationRecords[0].otp;
-                if(expiresAt < Date.now()){
-                    await UserOTPVerification.deleteMany({userId})
-                    throw new Error ("Code has expired. plese request again");
-                }
-                else{
-                    const validOtp  = await bcrypt.compare(otp, hashedOTP);
 
-                    if(!validOtp){
-                        throw new Error("Invalid code passed. Check your indox.");
-                    }
-                    else{
-                        await Student.updateOne({_id : userId}, {verified :true});
-                        await UserOTPVerification.deleteMany({userId})
-                        res.json({
-                            status:"Verified",
-                            message : "USER email verified successfully",
-                        })
-                    }
-                }
-            }
-        }
-    } catch (error) {
-         res.json({
-            status : "failed",
-            message : error.message,
-         })
-    }
-})
 module.exports = router;

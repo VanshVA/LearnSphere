@@ -3,7 +3,7 @@ import HeroSection from "./HeroSection/HeroSection";
 import AboutSection from "./AboutSection/AboutSection";
 import CoursesSection from "./CoursesSection/CoursesSection";
 import FAQSection from "./FAQSection/FAQSection";
-// import ContactSection from "./ContactSection/ContactSection";
+import ContactSection from "./ContactSection/ContactSection";
 import Navbar from "../../utils/Navbar/Navbar";
 import Footer from "./FooterSection/Footer";
 
@@ -15,8 +15,8 @@ const Homepage = () => {
       <AboutSection />
       <CoursesSection />
       <FAQSection />
+      <ContactSection></ContactSection>
       <Footer></Footer>
-
     </main>
   );
 };
