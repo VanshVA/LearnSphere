@@ -2,18 +2,13 @@ import React from 'react';
 import './App.css';
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Homepage from './pages/Homepage/Homepage';
-<<<<<<< HEAD
 import Authentication from './Authentication/Authentication';
 // import Logo from './components/Logo/Logo';
-=======
-import Authentication from './Authentication/Authentication'
 import PrivateRoute from './utils/Private/PrivateRoute/PrivateRoute';
 import AdminDashboard from './components/Dashboards/Admin/AdminDashboard';
 import StudentDashboard from './components/Dashboards/Student/StudentDashboard';
 import TeacherDashboard from './components/Dashboards/Teacher/TeacherDashboard';
 import Logo from './components/Logo/Logo';
-
->>>>>>> 69503fdcc09e5dcbbde6cbc7d9bb17bccd197556
 const App = () => {
 
   return (

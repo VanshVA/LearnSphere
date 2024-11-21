@@ -3,12 +3,9 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const Student = require('../models/student');
-<<<<<<< HEAD
 const UserOTPVerification = require('../models/UserOTPVerification');
-=======
 const Teacher = require('../models/teacher');
 const Admin = require('../models/admin');
->>>>>>> 69503fdcc09e5dcbbde6cbc7d9bb17bccd197556
 const router = express.Router();
 
 // Secret key for JWT
@@ -20,14 +17,9 @@ const transporter = nodemailer.createTransport({
         pass: "lplk exjd xqgu gpng",
     },
 });
-
-<<<<<<< HEAD
-// Signup API 
-router.post('/signup', async (req, res) => {
-=======
 // Admin signup API
 router.post('/admin-signup', async (req, res) => {
->>>>>>> 69503fdcc09e5dcbbde6cbc7d9bb17bccd197556
+
     try {
         const { adminName, adminEmail, adminPassword, role } = req.body;
 
@@ -38,7 +30,6 @@ router.post('/admin-signup', async (req, res) => {
         }
 
         // Create new student
-<<<<<<< HEAD
         const newStudent = new Student({
             studentName,
             studentEmail,
@@ -51,7 +42,7 @@ router.post('/admin-signup', async (req, res) => {
         await newStudent.save();
         res.status(201).json({ message: 'Student registered successfully. Verification OTP email sent.' });
 
-=======
+
         const newAdmin = new Admin({
             adminName,
             adminEmail,
@@ -61,7 +52,6 @@ router.post('/admin-signup', async (req, res) => {
 
         await newAdmin.save();
         res.status(201).json({ message: 'Admin registered successfully' });
->>>>>>> 69503fdcc09e5dcbbde6cbc7d9bb17bccd197556
     } catch (error) {
         res.status(500).json({ message: 'Error during signup', error: error.message });
     }
@@ -95,10 +85,7 @@ const sendOTPVerificationEmail = async ({ _id, studentEmail }) => {
         console.error("Error sending OTP email:", error.message);
     }
 };
-
-<<<<<<< HEAD
 // Signin API
-=======
 // Student Signup API
 router.post('/signup', async (req, res) => {
     try {
@@ -126,7 +113,6 @@ router.post('/signup', async (req, res) => {
 });
 
 // ALL{Admin, Teacher, Stident} Signin API
->>>>>>> 69503fdcc09e5dcbbde6cbc7d9bb17bccd197556
 router.post('/signin', async (req, res) => {
     try {
         const { email, password } = req.body;
