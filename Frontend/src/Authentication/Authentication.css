@@ -291,7 +291,7 @@
     margin: 0 8px;
     text-align: center;
     font-size: 1.5rem;
-    border: 2px solid #6665F1;
+    border: 2px solid var(--theme-color);;
     border-radius: 12px;
     background-color: rgba(42, 42, 42, 0.8);
     color: #ffffff;
@@ -299,7 +299,7 @@
 }
 
 .otp-input input:focus {
-    border-color: #A556F6;
+    border-color: var(--theme-color);
     box-shadow: 0 0 0 2px rgba(166, 86, 246, 0.3);
     outline: none;
 }
@@ -310,38 +310,10 @@
     margin: 0;
 }
 
-button {
-    background: linear-gradient(135deg, #6665F1, #A556F6);
-    color: white;
-    border: 2px solid #6665F1;
-    padding: 12px 24px;
-    font-size: 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    margin: 5px;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-}
-
-button:hover {
-    background: linear-gradient(135deg, #A556F6, #6665F1);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(166, 86, 246, 0.3);
-}
-
-button:disabled {
-    background: #cccccc;
-    border-color: #999999;
-    color: #666666;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-}
 
 #timer {
     font-size: 1rem;
-    color: #A556F6;
+    color: var(--theme-color);;
     font-weight: 500;
     margin-left: 10px;
 }
@@ -372,18 +344,18 @@ button:disabled {
 }
 
 .resend-link {
-    color: #6665F1;
+    color: var(--theme-color);;
     text-decoration: none;
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
 .resend-link:hover {
-    color: #A556F6;
+    color: var(--theme-color);;
     text-decoration: underline;
 }
 
 #email {
-    color: #A556F6;
+    color: var(--theme-color);;
     font-weight: 500;
 }
