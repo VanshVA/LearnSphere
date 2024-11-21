@@ -56,7 +56,7 @@ export default function Authentication() {
         </div>
       </div>
       
-      <div className="otp-section">
+      {/* <div className="otp-section">
         <div className="otp-container">
             <h1>OTP Verification</h1>
             <p>Enter the OTP you received to <span id="email"></span></p>
@@ -75,7 +75,7 @@ export default function Authentication() {
                 <span id="timer"></span>
             </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
